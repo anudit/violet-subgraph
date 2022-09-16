@@ -1,0 +1,25 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: HumanboundMintLogic
+    network: matic
+    source:
+      address: "0x41be3a6c17cf76442d9e7b150de4870027d36f52"
+      abi: HumanboundMintLogic
+      startBlock: 33099064
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - HBT
+        - Metadata
+      abis:
+        - name: HumanboundMintLogic
+          file: HumanboundMintLogic\abis\HumanboundMintLogic.json
+      eventHandlers:
+        - event: Minted(indexed address,indexed uint256)
+          handler: handleMinted
+      file: HumanboundMintLogic\HumanboundMintLogic.wasm

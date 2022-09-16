@@ -1,0 +1,17 @@
+type HBT @entity {
+  id: ID!
+  tokenId: BigInt!
+  owner: Bytes!
+  tokenURI: String!
+  metadata: Metadata @derivedFrom(field: "tokenPointed")
+}
+
+type Metadata @entity {
+  id: ID!
+  tokenPointed: HBT!
+  name: String
+  description: String
+  image: String
+  animation_url: String
+  external_url: String
+}
